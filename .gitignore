@@ -1,0 +1,7 @@
+# IDE Settings
+.cursor
+.vscode
+.idea
+
+# Workspace
+work
