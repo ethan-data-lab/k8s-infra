@@ -6,3 +6,6 @@
 
 # Environment
 compose/.env
+
+# Secrets
+**/values-secret.yaml
