@@ -5,7 +5,7 @@ Ghost 블로그를 Kustomize로 배포합니다 (Helm chart 없음, SQLite 사�
 ## 구조
 
 ```
-helm/ghost/
+kustomize/ghost/
 ├── base/
 │   ├── kustomization.yaml    # Base
 │   ├── deployment.yaml       # Deployment + PVC
@@ -22,10 +22,10 @@ helm/ghost/
 
 ```bash
 # Raspberry Pi
-kustomize build helm/ghost/overlays/pi/ | kubectl --context pi apply -f -
+kustomize build kustomize/ghost/overlays/pi/ | kubectl --context pi apply -f -
 
 # 매니페스트 미리보기
-kustomize build helm/ghost/overlays/pi/
+kustomize build kustomize/ghost/overlays/pi/
 ```
 
 ## 접속
