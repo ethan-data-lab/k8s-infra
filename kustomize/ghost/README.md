@@ -1,35 +1,36 @@
 # Ghost Blog
 
-Ghost 블로그를 Kustomize로 배포합니다 (Helm chart 없음, SQLite 사용).
+Ghost 블로그를 Kustomize로 배포합니다 (SQLite 사용).
 
 ## 구조
 
 ```
 kustomize/ghost/
 ├── base/
-│   ├── kustomization.yaml    # Base
-│   ├── deployment.yaml       # Deployment + PVC
+│   ├── kustomization.yaml
+│   ├── deployment.yaml       # Deployment + PVC (ghost:6-alpine)
 │   └── service.yaml          # ClusterIP Service
 └── overlays/
-    └── pi/
-        ├── kustomization.yaml      # Pi overlay
-        ├── patch-deployment.yaml   # URL(revelly.io), 리소스 설정
+    └── sandbox/
+        ├── kustomization.yaml
+        ├── patch-deployment.yaml   # URL(blog.revelly.io), 리소스 설정
         ├── patch-pvc.yaml          # storageClass: local-path
-        └── patch-service.yaml      # NodePort 30080
+        └── ingress.yaml            # blog.revelly.io → ghost:2368
 ```
 
 ## 배포
 
 ```bash
-# Raspberry Pi
-kustomize build kustomize/ghost/overlays/pi/ | kubectl --context pi apply -f -
-
-# 매니페스트 미리보기
-kustomize build kustomize/ghost/overlays/pi/
+kubectl kustomize kustomize/ghost/overlays/sandbox | ssh sandbox001 "kubectl apply -f -"
 ```
 
 ## 접속
 
-- 외부: https://revelly.io (Cloudflare Tunnel → NodePort 30080)
-- 로컬: http://192.168.0.5:30080
-- Admin: https://revelly.io/ghost
+- 블로그: https://blog.revelly.io
+- Admin: https://blog.revelly.io/ghost
+
+## 참고
+
+- DB: SQLite (`/var/lib/ghost/content/data/ghost.db`)
+- 콘텐츠(글, 이미지, DB)는 PVC `ghost-content` (local-path, 5Gi)에 저장
+- Ghost URL을 `http://`로 설정해야 Cloudflare Tunnel 환경에서 리다이렉트 루프 방지

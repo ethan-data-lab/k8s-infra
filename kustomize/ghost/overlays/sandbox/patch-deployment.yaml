@@ -9,7 +9,7 @@ spec:
         - name: ghost
           env:
             - name: url
-              value: https://revelly.io
+              value: http://blog.revelly.io
           resources:
             requests:
               cpu: 500m
