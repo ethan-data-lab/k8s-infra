@@ -1,6 +1,6 @@
 # k8s-infra
 
-홈서버(sandbox001) Kubernetes 인프라 구성.
+홈서버 Kubernetes 인프라 구성.
 
 ## 아키텍처
 
@@ -77,13 +77,13 @@ k8s-infra/
 
 ## 접속 정보
 
-| 서비스          | URL                          | 비고                           |
-| --------------- | ---------------------------- | ------------------------------ |
-| Ghost           | https://blog.revelly.io      | 공개 블로그                    |
-| MinIO Console   | https://minio.revelly.io     | S3 관리                        |
-| MinIO API       | https://minio-api.revelly.io | S3 API 엔드포인트              |
-| JuiceFS Gateway | https://juicefs.revelly.io   | JuiceFS S3 API                 |
-| Airflow         | https://airflow.revelly.io   | 워크플로우 관리                |
-| Grafana         | https://grafana.revelly.io   | 모니터링 대시보드              |
-| Prometheus      | https://prometheus.revelly.io | Prometheus Web UI             |
-| PostgreSQL      | sandbox001:30432             | NodePort, SSH 터널로 외부 접근 |
+| 서비스          | URL                           | 비고                           |
+| --------------- | ----------------------------- | ------------------------------ |
+| Ghost           | https://blog.revelly.io       | 공개 블로그                    |
+| MinIO Console   | https://minio.revelly.io      | S3 관리                        |
+| MinIO API       | https://minio-api.revelly.io  | S3 API 엔드포인트              |
+| JuiceFS Gateway | https://juicefs.revelly.io    | JuiceFS S3 API                 |
+| Airflow         | https://airflow.revelly.io    | 워크플로우 관리                |
+| Grafana         | https://grafana.revelly.io    | 모니터링 대시보드              |
+| Prometheus      | https://prometheus.revelly.io | Prometheus Web UI              |
+| PostgreSQL      | sandbox001:30432              | NodePort, SSH 터널로 외부 접근 |
