@@ -7,12 +7,16 @@ spec:
     spec:
       containers:
         - name: ghost
+          env:
+            - name: NODE_ENV
+              value: production
           envFrom:
             - secretRef:
                 name: ghost-smtp
-          env:
-            - name: url
-              value: http://blog.revelly.io
+          volumeMounts:
+            - name: ghost-config
+              mountPath: /var/lib/ghost/config.production.json
+              subPath: config.production.json
           resources:
             requests:
               cpu: 500m
@@ -20,3 +24,7 @@ spec:
             limits:
               cpu: "2"
               memory: 2Gi
+      volumes:
+        - name: ghost-config
+          configMap:
+            name: ghost-config

@@ -4,7 +4,10 @@ metadata:
   name: ghost
   labels:
     app: ghost
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: sandbox-ghost-forwarded-headers@kubernetescrd
 spec:
+  ingressClassName: traefik
   rules:
     - host: blog.revelly.io
       http:

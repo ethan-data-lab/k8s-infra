@@ -1,0 +1,10 @@
+{
+  "url": "https://blog.revelly.io",
+  "server": {
+    "port": 2368,
+    "host": "::"
+  },
+  "paths": {
+    "contentPath": "/var/lib/ghost/content"
+  }
+}

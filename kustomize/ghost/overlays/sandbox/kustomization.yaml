@@ -11,8 +11,14 @@ secretGenerator:
     envs:
       - smtp.env
 
+configMapGenerator:
+  - name: ghost-config
+    files:
+      - config.production.json
+
 resources:
   - ../../base
+  - middleware-ghost.yaml
   - ingress.yaml
 
 patches:

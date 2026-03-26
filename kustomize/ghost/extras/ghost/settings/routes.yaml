@@ -1,0 +1,23 @@
+# 적용 경로: Pod 내 .../content/settings/routes.yaml (https://ghost.org/docs/themes/routing/)
+routes:
+  /archive/:
+    template: archive
+  /recommendations/:
+    template: recommendations
+  /authors/:
+    template: authors
+  /signin/:
+    template: signin
+    data: page.signin
+  /signup/:
+    template: signup
+    data: page.signup
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
